@@ -52,6 +52,8 @@ public class Application {
             et = EM.getTransaction();
             et.begin();
             t = new Admin("admin","1234");
+            Teacher teacher = new Teacher("teacher","1234");
+            EM.persist(teacher);
             EM.persist(t);
             et.commit();
 

@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class StudentActionSelector {
+public class StudentActionSelector extends JFrame {
     private JPanel studentSelectorFrame;
     private JButton inscribeToCourseBtn;
     private JButton showTimeTableBtn;

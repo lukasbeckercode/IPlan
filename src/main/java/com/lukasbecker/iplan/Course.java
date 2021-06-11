@@ -1,9 +1,6 @@
 package com.lukasbecker.iplan;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -80,7 +77,7 @@ public class Course implements Serializable {
      * @see ERRORS
      * @throws ParseException if parsing from date to time fails, should not occur here!
      */
-    private ERRORS checkTime() throws ParseException {
+    public ERRORS checkTime() throws ParseException {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
         Date startTime = timeFormat.parse(timeFormat.format(startDate));
         Date endTime = timeFormat.parse(timeFormat.format(endDate));
@@ -93,7 +90,7 @@ public class Course implements Serializable {
         return ERRORS.OK;
     }
 
-    @OneToOne
+    @ManyToOne
     public Room getRoom() {
         return room;
     }
@@ -126,7 +123,7 @@ public class Course implements Serializable {
         this.courseName = courseName;
     }
 
-    @OneToOne
+    @ManyToOne
     public Teacher getTeacher() {
         return teacher;
     }

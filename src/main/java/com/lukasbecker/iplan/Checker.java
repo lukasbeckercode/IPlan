@@ -33,8 +33,8 @@ public class Checker {
         for(int i = 1; i<courseList.size(); i++){
 
             try {
-                startTime = timeFormat.parse(timeFormat.format(courseList.get(i-1).getStartDate()));
-                endTime = timeFormat.parse(timeFormat.format(courseList.get(i).getEndDate()));
+                startTime = timeFormat.parse(timeFormat.format(courseList.get(i).getStartDate()));
+                endTime = timeFormat.parse(timeFormat.format(courseList.get(i-1).getEndDate()));
             }catch (ParseException pe){
                 //
                 return ERRORS.UNEXPECTED_EXCEPTION;
@@ -59,8 +59,8 @@ public class Checker {
 
         for(int i = 1; i<courseList.size(); i++){
             try {
-                startTime = timeFormat.parse(timeFormat.format(courseList.get(i-1).getStartDate()));
-                endTime = timeFormat.parse(timeFormat.format(courseList.get(i).getEndDate()));
+                startTime = timeFormat.parse(timeFormat.format(courseList.get(i).getStartDate()));
+                endTime = timeFormat.parse(timeFormat.format(courseList.get(i-1).getEndDate()));
             }catch (ParseException pe){
                 //
                 return ERRORS.UNEXPECTED_EXCEPTION;
@@ -86,8 +86,8 @@ public class Checker {
 
         for(int i = 1; i<courseList.size(); i++){
             try {
-                startTime = timeFormat.parse(timeFormat.format(courseList.get(i-1).getStartDate()));
-                endTime = timeFormat.parse(timeFormat.format(courseList.get(i).getEndDate()));
+                startTime = timeFormat.parse(timeFormat.format(courseList.get(i).getStartDate()));
+                endTime = timeFormat.parse(timeFormat.format(courseList.get(i-1).getEndDate()));
             }catch (ParseException pe){
                 //
                 return ERRORS.UNEXPECTED_EXCEPTION;
@@ -98,6 +98,10 @@ public class Checker {
             }
         }
         return ERRORS.OK;
+    }
+
+    public void removeCourse(int id){
+        courseList.remove(id);
     }
 
 
