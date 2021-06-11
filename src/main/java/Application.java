@@ -19,7 +19,7 @@ public class Application {
         intro.setVisible(true);
 
         addTeacher();
-      //  EMF.close();
+       // EMF.close();
     }
     public static void addCourse(){
         EntityManager EM = EMF.createEntityManager();

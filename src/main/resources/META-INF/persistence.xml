@@ -15,7 +15,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.64.2/iplan"/>
             <property name="javax.persistence.jdbc.user" value="testuser"/>
             <property name="javax.persistence.jdbc.password" value="testpw"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 </persistence>

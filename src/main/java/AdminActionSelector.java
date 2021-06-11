@@ -1,4 +1,5 @@
 import com.lukasbecker.iplan.Checker;
+import com.lukasbecker.iplan.User;
 
 import javax.persistence.EntityManagerFactory;
 import javax.swing.*;
@@ -10,7 +11,7 @@ public class AdminActionSelector extends JFrame{
     private JButton button3;
     private Checker checker;
     private EntityManagerFactory emf;
-    public AdminActionSelector(Checker checker,EntityManagerFactory emf){
+    public AdminActionSelector(Checker checker, EntityManagerFactory emf, User u){
         this.emf = emf;
         add(adminSelectorFrame);
         this.checker = checker;

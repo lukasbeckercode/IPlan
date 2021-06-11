@@ -13,6 +13,7 @@ public class Intro extends JFrame {
     private JTextField passwordTextBox;
     private JButton continueButton;
     private JButton createUserBtn;
+    private JButton exitBtn;
     private final EntityManagerFactory emf;
     private final Checker checker;
 
@@ -22,6 +23,10 @@ public class Intro extends JFrame {
         this.emf = emf;
         continueButton.addActionListener(e->userHandler());
         createUserBtn.addActionListener(e->addUser());
+        exitBtn.addActionListener(e->{
+            emf.close();
+            System.exit(0);
+        });
     }
     private void addUser(){
         User u = null;
@@ -50,18 +55,18 @@ public class Intro extends JFrame {
             if(u.getUserName().equals(username)){
                 if(u.getPassword().equals(password)){
                     if(adminRadioBtn.isSelected()){
-                        AdminActionSelector adminActionSelector = new AdminActionSelector(checker,emf);
+                        AdminActionSelector adminActionSelector = new AdminActionSelector(checker,emf,u);
                         adminActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         adminActionSelector.pack();
                         adminActionSelector.setVisible(true);
-                        this.setVisible(false);
+                       // this.setVisible(false);
                     }else if(teacherRadioBtn.isSelected()){
-                        TeacherActionSelector teacherActionSelector = new TeacherActionSelector();
+                        TeacherActionSelector teacherActionSelector = new TeacherActionSelector(u);
                         teacherActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         teacherActionSelector.pack();
                         teacherActionSelector.setVisible(true);
                     }else if(studentRadioBtn.isSelected()){
-                        StudentActionSelector studentActionSelector = new StudentActionSelector();
+                        StudentActionSelector studentActionSelector = new StudentActionSelector(checker,emf,u);
                         studentActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         studentActionSelector.pack();
                         studentActionSelector.setVisible(true);
