@@ -1,10 +1,6 @@
-import com.lukasbecker.iplan.Checker;
-import com.lukasbecker.iplan.User;
+import com.lukasbecker.iplan.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.swing.*;
 import java.util.List;
 
@@ -16,6 +12,7 @@ public class Intro extends JFrame {
     private JTextField userNameTextBox;
     private JTextField passwordTextBox;
     private JButton continueButton;
+    private JButton createUserBtn;
     private final EntityManagerFactory emf;
     private final Checker checker;
 
@@ -24,8 +21,26 @@ public class Intro extends JFrame {
         this.checker = checker;
         this.emf = emf;
         continueButton.addActionListener(e->userHandler());
+        createUserBtn.addActionListener(e->addUser());
     }
-
+    private void addUser(){
+        User u = null;
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        if(adminRadioBtn.isSelected()){
+            u = new Admin(userNameTextBox.getText(),passwordTextBox.getText());
+        }else if(teacherRadioBtn.isSelected()){
+            u = new Teacher(userNameTextBox.getText(),passwordTextBox.getText());
+        }else if(studentRadioBtn.isSelected()){
+            u = new Student(userNameTextBox.getText(),passwordTextBox.getText());
+        }else {
+            //TODO no radioBox checked!
+            return;
+        }
+        et.begin();
+        em.persist(u);
+        et.commit();
+    }
     private void userHandler(){
         String username = userNameTextBox.getText();
         String password = passwordTextBox.getText();
@@ -61,15 +76,7 @@ public class Intro extends JFrame {
                 break;
             }else{
                 //TODO new user to create?
-                if(adminRadioBtn.isSelected()){
 
-                }else if(teacherRadioBtn.isSelected()){
-
-                }else if(studentRadioBtn.isSelected()){
-
-                }else {
-                    //TODO no radioBox checked!
-                }
             }
 
         }
