@@ -7,19 +7,23 @@ import javax.persistence.Persistence;
 import javax.swing.*;
 
 public class Application {
-    private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("HibernateTest");
+    private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("IPlan");
     static Room r = null;
     static User t = null;
     static Course c = null;
     public static void main(String[] args) {
         Checker checker = new Checker();
-        AddCourseWindow addCourseWindow = new AddCourseWindow(checker);
-        addCourseWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        addCourseWindow.pack();
-        addCourseWindow.setVisible(true);
-        addRoom();
-        addTeacher();
-        addCourse();
+        Intro intro = new Intro(EMF);
+        intro.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        intro.pack();
+        intro.setVisible(true);
+        //AddCourseWindow addCourseWindow = new AddCourseWindow(checker);
+        //addCourseWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        //addCourseWindow.pack();
+        //addCourseWindow.setVisible(true);
+        //addRoom();
+        //addTeacher();
+        //addCourse();
         EMF.close();
     }
     public static void addCourse(){
