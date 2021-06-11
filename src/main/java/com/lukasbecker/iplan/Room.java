@@ -1,12 +1,18 @@
 package com.lukasbecker.iplan;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
  * a room hosts a course, has a name and a number
  * no two courses must appear in one room at the same time
  */
-public class Room {
-    private final int roomNr;
-    private final String roomName;
+@Entity
+public class Room implements Serializable {
+    private int roomNr;
+    private String roomName;
 
     /**
      * Constructor
@@ -18,11 +24,25 @@ public class Room {
         this.roomName = roomName;
     }
 
+    public Room() {
+
+    }
+
+    @Column
     public String getRoomName() {
         return roomName;
     }
 
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    @Id
+    @Column(unique = true)
     public int getRoomNr() {
         return roomNr;
+    }
+    public void setRoomNr(int roomNr){
+        this.roomNr = roomNr;
     }
 }

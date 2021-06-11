@@ -1,5 +1,10 @@
 package com.lukasbecker.iplan;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,10 +12,16 @@ import java.util.Date;
 /**
  * a course has a Start and End time, a teacher and a room. Also a Name
  */
-public class Course {
-    private final Date startDate, endDate;
-    private final String courseName;
+@Entity
+public class Course implements Serializable {
+    private Date startDate, endDate;
+
+
+
+    private int courseID;
+    private String courseName;
     private Teacher teacher;
+
     private Room room;
 
     /**
@@ -59,6 +70,10 @@ public class Course {
         }
     }
 
+    public Course() {
+
+    }
+
     /**
      * checks if the time is within set bounds
      * @return OK if correct, EARLY if too early, LATE if too late
@@ -78,31 +93,54 @@ public class Course {
         return ERRORS.OK;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
+    @OneToOne
     public Room getRoom() {
         return room;
     }
-
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+    @Column
     public Date getStartDate() {
         return startDate;
     }
+    public void setStartDate(Date startDate){
+        this.startDate = startDate;
+    }
 
+    @Column
     public Date getEndDate() {
         return endDate;
     }
 
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    @Column
     public String getCourseName() {
         return courseName;
     }
 
-    public String getTeacher() {
-        return teacher.getUserName();
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    @OneToOne
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    @Id
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
     }
 }
