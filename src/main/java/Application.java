@@ -13,18 +13,13 @@ public class Application {
     static Course c = null;
     public static void main(String[] args) {
         Checker checker = new Checker();
-        Intro intro = new Intro(EMF);
+        Intro intro = new Intro(EMF,checker);
         intro.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         intro.pack();
         intro.setVisible(true);
-        //AddCourseWindow addCourseWindow = new AddCourseWindow(checker);
-        //addCourseWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        //addCourseWindow.pack();
-        //addCourseWindow.setVisible(true);
-        //addRoom();
-        //addTeacher();
-        //addCourse();
-        EMF.close();
+
+        addTeacher();
+      //  EMF.close();
     }
     public static void addCourse(){
         EntityManager EM = EMF.createEntityManager();
@@ -56,7 +51,7 @@ public class Application {
         try {
             et = EM.getTransaction();
             et.begin();
-            t = new Teacher("testTeacher","1234");
+            t = new Admin("admin","1234");
             EM.persist(t);
             et.commit();
 
