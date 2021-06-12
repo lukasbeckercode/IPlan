@@ -7,7 +7,8 @@ public class TeacherActionSelector extends JFrame {
     private JButton wishForCourseDateButton;
     private JButton viewMyCourseTimetableButton;
 
+    //TODO: implement me!
     public TeacherActionSelector(User u) {
-
+        add(teacherSelectorFrame);
     }
 }
