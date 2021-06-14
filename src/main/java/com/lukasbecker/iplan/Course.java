@@ -105,6 +105,7 @@ public class Course implements Serializable {
         this.startDate = startDate;
     }
 
+
     @Column
     public Date getEndDate() {
         return endDate;
@@ -114,29 +115,53 @@ public class Course implements Serializable {
         this.endDate = endDate;
     }
 
+    /**
+     *
+     * @return the name of the course
+     */
     @Column
     public String getCourseName() {
         return courseName;
     }
 
+    /**
+     *
+     * @param courseName the name for the course
+     */
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
 
+    /**
+     *
+     * @return the teacher teaching a course
+     */
     @ManyToOne
     public Teacher getTeacher() {
         return teacher;
     }
 
+    /**
+     *
+     * @param teacher teaching the course
+     */
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
+    /**
+     *
+     * @return course id
+     */
     @Id
     public int getCourseID() {
         return courseID;
     }
 
+    /**
+     *
+     * @param courseID if for the course
+     */
     public void setCourseID(int courseID) {
         this.courseID = courseID;
     }

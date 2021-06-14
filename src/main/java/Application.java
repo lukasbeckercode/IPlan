@@ -1,4 +1,6 @@
 import com.lukasbecker.iplan.*;
+import com.lukasbecker.thymeleaf.app;
+import org.springframework.boot.SpringApplication;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +13,7 @@ public class Application {
     static Room r = null;
     static User t = null;
     static Course c = null;
+
     public static void main(String[] args) {
         Checker checker = new Checker();
         Intro intro = new Intro(EMF,checker);
@@ -18,7 +21,8 @@ public class Application {
         intro.pack();
         intro.setVisible(true);
 
-        addTeacher();
+        SpringApplication.run(app.class,args);
+        //addTeacher();
        // EMF.close();
     }
     public static void addCourse(){
