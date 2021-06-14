@@ -5,7 +5,7 @@
     <title>Employee List</title>
 </head>
 <body>
-<h1>Welcome</h1>
+<h1>Welcome!</h1>
 <br>
 <h3>TimeTable</h3>
 <br />
@@ -17,12 +17,12 @@
         <td>Room</td>
         <td>Teacher</td>
     </tr>
-    <tr th:each="c : ${course}">
-        <td th:text="${c?.startDate}">start</td>
-        <td th:text="${c?.endDate}">end </td>
-        <td th:text="${c?.courseName}">id</td>
-        <td th:text="${c?.room?.roomName}">room</td>
-        <td th:text="${c?.teacher?.userName}">name</td>
+    <tr th:each="c : ${courses}">
+        <td th:text="${c?.course?.startDate}">start</td>
+        <td th:text="${c?.course?.endDate}">end </td>
+        <td th:text="${c?.course?.courseName}">id</td>
+        <td th:text="${c?.course?.room?.roomName}">room</td>
+        <td th:text="${c?.course?.teacher?.userName}">name</td>
     </tr>
 </table>
 </body>
