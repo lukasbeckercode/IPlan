@@ -1,7 +1,4 @@
-import com.lukasbecker.iplan.Checker;
-import com.lukasbecker.iplan.Course;
-import com.lukasbecker.iplan.Student;
-import com.lukasbecker.iplan.User;
+import com.lukasbecker.iplan.*;
 
 import javax.persistence.*;
 import javax.swing.*;
@@ -40,7 +37,14 @@ public class InscribeToCourse extends JFrame {
      * TODO: fix me!
      */
     private void inscribe() {
-        user.addCourse(courses.get(coursesComboBox.getSelectedIndex()));
+       CourseUser courseUser =  new CourseUser(courses.get(coursesComboBox.getSelectedIndex()), User.getCurrentUser());
+       // user.addCourse(courses.get(coursesComboBox.getSelectedIndex()));
+
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        em.persist(courseUser);
+        et.commit();
     }
 
     /**

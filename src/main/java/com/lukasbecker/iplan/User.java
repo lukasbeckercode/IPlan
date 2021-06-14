@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Entity
 public class User implements Serializable {
     private String userName, password;
+    private static User currentUser;
 
     /**
      * Constructor
@@ -43,5 +44,13 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        User.currentUser = currentUser;
     }
 }

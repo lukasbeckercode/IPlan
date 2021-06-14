@@ -1,6 +1,7 @@
 package com.lukasbecker.iplan;
 
 import javax.persistence.*;
+import javax.swing.*;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,8 +34,8 @@ public class Course implements Serializable {
         this.courseName = courseName;
         try {
             if(checkTime()!=ERRORS.OK){
-                //TODO: give the user an error message
-                System.err.println("Invalid Time!");
+                JOptionPane.showMessageDialog(null,"Invalid Time: No course before 8am or 11 pm",
+                        "Invalid Time",JOptionPane.ERROR_MESSAGE);
             }
         }catch (ParseException e){
             e.printStackTrace();
@@ -59,8 +60,8 @@ public class Course implements Serializable {
 
         try {
             if(checkTime()!=ERRORS.OK){
-                //TODO: give the user an error message
-                System.err.println("Invalid Time!");
+                JOptionPane.showMessageDialog(null,"Invalid Time: No course before 8am or 11 pm",
+                        "Invalid Time",JOptionPane.ERROR_MESSAGE);
             }
         }catch (ParseException e){
             e.printStackTrace();

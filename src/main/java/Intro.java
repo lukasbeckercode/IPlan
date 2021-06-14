@@ -31,7 +31,17 @@ public class Intro extends JFrame {
         this.checker = checker;
         this.emf = emf;
         continueButton.addActionListener(e -> userHandler());
-        createUserBtn.addActionListener(e -> addUser());
+        createUserBtn.addActionListener(e ->{
+            if(!userExists(userNameTextBox.getText())){
+                int okCancel=  JOptionPane.showConfirmDialog(introFrame,"Add user?",
+                        "Confirm...",JOptionPane.OK_CANCEL_OPTION);
+
+                if(okCancel == JOptionPane.OK_OPTION){
+                    addUser();
+                }
+            }
+
+        });
         exitBtn.addActionListener(e -> {
             emf.close();
             System.exit(0);
@@ -52,12 +62,23 @@ public class Intro extends JFrame {
         } else if (studentRadioBtn.isSelected()) {
             u = new Student(userNameTextBox.getText(), passwordTextBox.getText());
         } else {
-            //TODO no radioBox checked!
+            JOptionPane.showMessageDialog(introFrame,"Error-No user function (e.g. Student) selected",
+                    "Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
         et.begin();
         em.persist(u);
         et.commit();
+    }
+
+
+    public boolean userExists(String userName){
+        for(User user:getUsers()){
+            if(user.getUserName().equals(userName)){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -68,15 +89,14 @@ public class Intro extends JFrame {
         String password = passwordTextBox.getText();
         List<User> users = getUsers();
         for (User u : users) {
-            System.out.println(username);
             if (u.getUserName().equals(username)) {
                 if (u.getPassword().equals(password)) {
+                    User.setCurrentUser(u);
                     if (adminRadioBtn.isSelected()) {
                         AdminActionSelector adminActionSelector = new AdminActionSelector(checker, emf, u);
                         adminActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         adminActionSelector.pack();
                         adminActionSelector.setVisible(true);
-                        // this.setVisible(false);
                     } else if (teacherRadioBtn.isSelected()) {
                         TeacherActionSelector teacherActionSelector = new TeacherActionSelector(u);
                         teacherActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -90,15 +110,13 @@ public class Intro extends JFrame {
                     } else {
                         JOptionPane.showMessageDialog(introFrame, "Error: No function(e.g. Student) selected",
                                 "Error", JOptionPane.ERROR_MESSAGE);
+                        User.setCurrentUser(null);
                     }
                 } else {
                     JOptionPane.showMessageDialog(introFrame, "Wrong Password",
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
-            } else {
-                //TODO new user to create?
-
             }
 
         }

@@ -1,7 +1,7 @@
 package com.lukasbecker.thymeleaf;
 
 import com.lukasbecker.iplan.Course;
-import com.lukasbecker.iplan.Student;
+import com.lukasbecker.iplan.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
@@ -12,7 +12,7 @@ public class CoursesRepo {
 EntityManagerFactory emf = Persistence.createEntityManagerFactory("IPlan");
 
 
-    protected List<Course> getCourses() {
+    protected List<Course> getCourses(User user) {
 
         List<Course> courses = null;
         EntityManager em = emf.createEntityManager();
@@ -28,7 +28,6 @@ EntityManagerFactory emf = Persistence.createEntityManagerFactory("IPlan");
         } finally {
             em.close();
         }
-
         return courses ;
     }
 }

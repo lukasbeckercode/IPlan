@@ -19,7 +19,6 @@ For said website, I finally decided on using ThymeLeaf with SpringBoot. It creat
 I might add some css for it later
 ## TODO
 - check Checker class: Testcase Written!  
-- Improve new user handling: Kinda done?  
 - add timetable: Thymeleaf added, maybe css?  
 - check what assistent entity is
 - inscribe feature for students not working in Hibernate

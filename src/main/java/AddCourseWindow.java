@@ -119,12 +119,16 @@ public class AddCourseWindow extends JFrame {
         }
         Course course = new Course(startDate, endDate, title);
         checker.addCourse(course);
+        ERRORS errorRoom = checker.checkRoom();
+        ERRORS errorTeacher = checker.checkTeacher();
+        if (errorRoom != ERRORS.OK) {
+            JOptionPane.showMessageDialog(mainPanel,"Time Collision Error: "+errorRoom,
+                    String.valueOf(errorRoom),JOptionPane.ERROR_MESSAGE);
+        } else if(errorTeacher!= ERRORS.OK){
 
-        if (checker.checkRoom() != ERRORS.OK || checker.checkTeacher() != ERRORS.OK) {
-            //TODO: Error message
-            System.err.println("Room or time invalid");
-        } else {
-            //TODO: add course to database
+            JOptionPane.showMessageDialog(mainPanel,"Time Collision Error: "+errorTeacher,
+                    String.valueOf(errorTeacher),JOptionPane.ERROR_MESSAGE);
+        }else {
             EntityManager EM = emf.createEntityManager();
             EntityTransaction et = null;
 

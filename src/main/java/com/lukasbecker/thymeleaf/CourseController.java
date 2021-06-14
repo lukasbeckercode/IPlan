@@ -1,6 +1,7 @@
 package com.lukasbecker.thymeleaf;
 
 import com.lukasbecker.iplan.Course;
+import com.lukasbecker.iplan.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ public class CourseController {
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     public String getEmployeeList(Model model) {
 
-        List<Course> courseList = coursesRepo.getCourses();
+        List<Course> courseList = coursesRepo.getCourses(User.getCurrentUser());
         model.addAttribute("course",courseList);
         return "courses";
     }
