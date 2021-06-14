@@ -1,3 +1,5 @@
+package com.lukasbecker.UI;
+
 import com.lukasbecker.iplan.Checker;
 import com.lukasbecker.iplan.User;
 
