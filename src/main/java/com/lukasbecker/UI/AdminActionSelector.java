@@ -13,6 +13,8 @@ public class AdminActionSelector extends JFrame {
     private JButton addRoomBtn;
     private JButton addACourseButton;
     private JButton viewCourseWishesBtn;
+    private JButton removeRoom;
+    private JButton removeCourseButton;
 
     /**
      * Constructor
