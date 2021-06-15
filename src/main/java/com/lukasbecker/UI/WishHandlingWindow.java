@@ -5,6 +5,7 @@ import com.lukasbecker.iplan.WISH_STATUS;
 
 import javax.persistence.*;
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WishHandlingWindow extends JFrame {
@@ -14,11 +15,12 @@ public class WishHandlingWindow extends JFrame {
     private JButton declineButton;
     private JPanel wishHandlingForm;
     private final EntityManagerFactory emf;
-    EntityManager em;
-    private List<CourseWish> courseWishes ;
+    private EntityManager em;
+    private final List<CourseWish> courseWishes ;
 
     public WishHandlingWindow(EntityManagerFactory emf){
         this.emf = emf;
+        courseWishes = new ArrayList<>();
         add(wishHandlingForm);
         getCourseWishes();
         updateTextBox(courseWishes.get(wishesComboBox.getSelectedIndex()));
@@ -51,7 +53,11 @@ public class WishHandlingWindow extends JFrame {
         TypedQuery<CourseWish> tq = em.createQuery(query, CourseWish.class);
         et.begin();
         try {
-            courseWishes = tq.getResultList();
+             tq.getResultList().forEach(cw->{
+                 if(cw.getStatus()==WISH_STATUS.PENDING){
+                     courseWishes.add(cw);
+                 }
+             });
             courseWishes.forEach(c -> wishesComboBox.addItem(c.getName()+": "+c.getStatus()));
         } catch (NoResultException nre) {
             nre.printStackTrace();

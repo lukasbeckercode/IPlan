@@ -89,25 +89,30 @@ public class Intro extends JFrame {
     private void userHandler() {
         String username = userNameTextBox.getText();
         String password = passwordTextBox.getText();
+        boolean noUserFound = true;
         List<User> users = getUsers();
         for (User u : users) {
             if (u.getUserName().equals(username)) {
+                noUserFound = false; 
                 if (u.getPassword().equals(password)) {
                     User.setCurrentUser(u);
                     if (adminRadioBtn.isSelected()) {
                         AdminActionSelector adminActionSelector = new AdminActionSelector(checker, emf);
                         adminActionSelector.pack();
                         adminActionSelector.setVisible(true);
+                        adminActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         this.setVisible(false);
                     } else if (teacherRadioBtn.isSelected()) {
                         TeacherActionSelector teacherActionSelector = new TeacherActionSelector(emf);
                         teacherActionSelector.pack();
                         teacherActionSelector.setVisible(true);
+                        teacherActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         this.setVisible(false);
                     } else if (studentRadioBtn.isSelected()) {
                         StudentActionSelector studentActionSelector = new StudentActionSelector(checker, emf);
                         studentActionSelector.pack();
                         studentActionSelector.setVisible(true);
+                        studentActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         this.setVisible(false);
                     } else {
                         JOptionPane.showMessageDialog(introFrame, "Error: No function(e.g. Student) selected",
@@ -121,6 +126,11 @@ public class Intro extends JFrame {
                 break;
             }
 
+        }
+
+        if(noUserFound){
+            JOptionPane.showMessageDialog(introFrame,"Wrong Username",
+                    "Error",JOptionPane.ERROR_MESSAGE);
         }
 
     }

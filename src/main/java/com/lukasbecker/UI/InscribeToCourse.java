@@ -50,9 +50,18 @@ public class InscribeToCourse extends JFrame {
 
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
-        et.begin();
-        em.persist(courseUser);
-        et.commit();
+        try {
+
+            et.begin();
+            em.persist(courseUser);
+            et.commit();
+            JOptionPane.showMessageDialog(inscribePanel,"Inscribed successfully!",
+                    "Success",JOptionPane.INFORMATION_MESSAGE);
+        }catch (Exception e){
+            et.rollback();
+            JOptionPane.showMessageDialog(inscribePanel,"An Error occurred, please inform an admin!",
+                    "Error",JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**

@@ -53,6 +53,9 @@ public class RemoveCourseUserWindow extends JFrame{
             CourseUser course = em.find(CourseUser.class, courseUsers.get(courseComboBox.getSelectedIndex()).getId()) ;
             em.remove(course);
             et.commit();
+
+            JOptionPane.showMessageDialog(removeWindowForm,"Course deleted successfully!",
+                    "Success!",JOptionPane.INFORMATION_MESSAGE);
         }catch (Exception e){
             JOptionPane.showMessageDialog(removeWindowForm,
                     "Error: Could not delete Course! Please contact Admin for further help.",

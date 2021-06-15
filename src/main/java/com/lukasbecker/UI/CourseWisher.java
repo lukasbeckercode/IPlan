@@ -16,8 +16,8 @@ public class CourseWisher extends JFrame {
     private DateTimePicker endTimePicker;
     private DateTimePicker startTimePicker;
 
-    List<Room> rooms;
-    EntityManagerFactory emf;
+    private final List<Room> rooms;
+    private final EntityManagerFactory emf;
 
     /**
      * Constructor
@@ -43,9 +43,18 @@ public class CourseWisher extends JFrame {
 
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
-        et.begin();
-        em.persist(cw);
-        et.commit();
+
+        try {
+
+            et.begin();
+            em.persist(cw);
+            et.commit();
+            JOptionPane.showMessageDialog(courseWishFrame,"Wish sent successfully!",
+                    "Success",JOptionPane.INFORMATION_MESSAGE);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(courseWishFrame,"An Error occurred, please contact an admin!",
+                    e.getMessage(),JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**

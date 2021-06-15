@@ -28,6 +28,7 @@ public class StudentActionSelector extends JFrame {
         add(studentSelectorFrame);
         inscribeToCourseBtn.addActionListener(e -> {
             InscribeToCourse inscribeToCourse = new InscribeToCourse(checker, emf);
+            inscribeToCourse.pack();
             inscribeToCourse.setVisible(true);
         });
 
@@ -38,6 +39,12 @@ public class StudentActionSelector extends JFrame {
             } catch (IOException | URISyntaxException ioException) {
                 ioException.printStackTrace();
             }
+        });
+
+        removeCourseBtn.addActionListener(e->{
+            RemoveCourseUserWindow rcuw = new RemoveCourseUserWindow(emf);
+            rcuw.pack();
+            rcuw.setVisible(true);
         });
     }
 }
