@@ -6,9 +6,13 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
+ * User <br />
  * Every user on this system needs a username and a password
  * This is a very unsafe way of storing passwords!!
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 10:48
  */
+
 @Entity
 public class User implements Serializable {
     private String userName, password;

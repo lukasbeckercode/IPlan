@@ -4,9 +4,13 @@ import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
+ * Teacher <br />
  * A teacher teaches a course and can send preferred times of teaching
  * @see User
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 10:48
  */
+
 @Entity
 public class Teacher extends User implements Serializable {
     /**

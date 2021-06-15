@@ -1,11 +1,18 @@
+
+
 package com.lukasbecker.iplan;
 
 import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
- * can change, add and remove every piece of information on the System
+ * Admin <br />
+ * can add and delete courses and rooms
+ * can accept and decline course wishes
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 10:44
  */
+
 @Entity
 public class Admin extends User implements Serializable {
 

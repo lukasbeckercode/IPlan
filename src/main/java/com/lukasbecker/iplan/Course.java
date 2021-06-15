@@ -8,9 +8,14 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+
 /**
+ * Course <br />
  * a course has a Start and End time, a teacher and a room. Also a Name
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 10:44
  */
+
 @Entity
 public class Course implements Serializable {
     private LocalDateTime startDate, endDate;

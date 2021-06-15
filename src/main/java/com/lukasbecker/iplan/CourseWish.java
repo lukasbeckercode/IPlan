@@ -1,3 +1,4 @@
+
 package com.lukasbecker.iplan;
 
 import javax.persistence.*;
@@ -5,8 +6,11 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
+ * CourseWish <br />
  * CourseWish is a wish from a teacher when and where to hold which course
  * This is a Hibernate Object
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 12:27
  */
 @Entity
 public class CourseWish implements Serializable {
@@ -41,10 +45,18 @@ public class CourseWish implements Serializable {
     public CourseWish() {
     }
 
+    /**
+     * gets the status of a course wish
+     * @return course wish status
+     */
     public WISH_STATUS getStatus() {
         return status;
     }
 
+    /**
+     * sets the course wish status
+     * @param status the status to be set
+     */
     public void setStatus(WISH_STATUS status) {
         this.status = status;
     }

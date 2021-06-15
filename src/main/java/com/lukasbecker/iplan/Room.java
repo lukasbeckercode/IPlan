@@ -6,9 +6,13 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
+ * Room <br />
  * a room hosts a course, has a name and a number
  * no two courses must appear in one room at the same time
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 10:44
  */
+
 @Entity
 public class Room implements Serializable {
     private int roomNr;

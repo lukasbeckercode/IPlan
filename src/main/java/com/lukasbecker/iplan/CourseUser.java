@@ -4,8 +4,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
+ * CourseUser <br />
  * This Class is needed to store which user is inscribed to which course
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 10:44
  */
+
 @Entity
 public class CourseUser implements Serializable {
     private Course course;

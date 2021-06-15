@@ -1,8 +1,16 @@
+
+
 package com.lukasbecker.iplan;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Checker <br />
+ * CHecks time, room and teacher integrity
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 14:52
+ */
 public class Checker  {
     List<Course> courseList = new ArrayList<>();
     private final TimeComparator TimeComparator = new TimeComparator();
@@ -84,6 +92,9 @@ public class Checker  {
         return ERRORS.OK;
     }
 
+    /**
+     * clears the arrayList
+     */
     public void clearList(){
         courseList.clear();
     }
