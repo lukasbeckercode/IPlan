@@ -41,5 +41,15 @@ public class AdminActionSelector extends JFrame {
             whw.pack();
             whw.setVisible(true);
         });
+        removeRoom.addActionListener(e->{
+            RemoveRoomWindow rrw = new RemoveRoomWindow(emf);
+            rrw.pack();
+            rrw.setVisible(true);
+        });
+        removeCourseButton.addActionListener(e->{
+            RemoveCourseWindow rcw = new RemoveCourseWindow(emf);
+            rcw.pack();
+            rcw.setVisible(true);
+        });
     }
 }
