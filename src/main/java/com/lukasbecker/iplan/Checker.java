@@ -14,33 +14,29 @@ public class Checker {
 
     /**
      * adds a course to the List
+     *
      * @param course the course to be added
      */
-    public void addCourse(Course course){
+    public void addCourse(Course course) {
         courseList.add(course);
     }
 
     /**
      * checks if a room is available for a course
+     *
      * @return OK if it is, OVERLAPPING_ROOM if not
      * @see ERRORS
      */
-    public ERRORS checkRoom(){
-        if(courseList.size()==0)
+    public ERRORS checkRoom() {
+        if (courseList.size() == 0)
             return ERRORS.OK;
 
 
-        for(int i = 1; i<courseList.size(); i++){
+        for (int i = 1; i < courseList.size(); i++) {
 
-            try {
-                startTime = timeFormat.parse(timeFormat.format(courseList.get(i).getStartDate()));
-                endTime = timeFormat.parse(timeFormat.format(courseList.get(i-1).getEndDate()));
-            }catch (ParseException pe){
-                //
-                return ERRORS.UNEXPECTED_EXCEPTION;
-            }
+            boolean check = courseList.get(i).getStartDate().isBefore(courseList.get(i - 1).getEndDate());
 
-            if(startTime.before(endTime)&&courseList.get(i-1).getRoom()==courseList.get(i).getRoom()){
+            if (check && courseList.get(i - 1).getRoom() == courseList.get(i).getRoom()) {
                 return ERRORS.OVERLAPPING_ROOM;
             }
         }
@@ -49,24 +45,19 @@ public class Checker {
 
     /**
      * checks if a teacher is available for a course
+     *
      * @return OK if they are, OVERLAPPING_TEACHER if not
      * @see ERRORS
      */
-    public ERRORS checkTeacher(){
-        if(courseList.size()==0)
+    public ERRORS checkTeacher() {
+        if (courseList.size() == 0)
             return ERRORS.OK;
 
+        boolean check1;
 
-        for(int i = 1; i<courseList.size(); i++){
-            try {
-                startTime = timeFormat.parse(timeFormat.format(courseList.get(i).getStartDate()));
-                endTime = timeFormat.parse(timeFormat.format(courseList.get(i-1).getEndDate()));
-            }catch (ParseException pe){
-                //
-                return ERRORS.UNEXPECTED_EXCEPTION;
-            }
-
-            if(startTime.before(endTime)&& courseList.get(i - 1).getTeacher().equals(courseList.get(i).getTeacher())){
+        for (int i = 1; i < courseList.size(); i++) {
+            check1 = courseList.get(i).getStartDate().isBefore(courseList.get(i - 1).getEndDate());
+            if (check1 && courseList.get(i - 1).getTeacher().equals(courseList.get(i).getTeacher())) {
                 return ERRORS.OVERLAPPING_TEACHER;
             }
         }
@@ -76,31 +67,26 @@ public class Checker {
     /**
      * Checks if two courses overlap
      * FOR STUDENTS
+     *
      * @return OK if no two courses overlap, OVERLAPPING_COURSE if they do
      * @see ERRORS
      */
-    public ERRORS checkCourseTime(){
-        if(courseList.size()==0)
+    public ERRORS checkCourseTime() {
+        if (courseList.size() == 0)
             return ERRORS.OK;
 
 
-        for(int i = 1; i<courseList.size(); i++){
-            try {
-                startTime = timeFormat.parse(timeFormat.format(courseList.get(i).getStartDate()));
-                endTime = timeFormat.parse(timeFormat.format(courseList.get(i-1).getEndDate()));
-            }catch (ParseException pe){
-                //
-                return ERRORS.UNEXPECTED_EXCEPTION;
-            }
+        for (int i = 1; i < courseList.size(); i++) {
+                boolean check = courseList.get(i).getStartDate().isBefore(courseList.get(i-1).getEndDate());
+                if (check) {
+                    return ERRORS.OVERLAPPING_COURSE;
+                }
 
-            if(startTime.before(endTime)){
-                return ERRORS.OVERLAPPING_COURSE;
-            }
+
+
         }
         return ERRORS.OK;
     }
-
-
 
 
 }
