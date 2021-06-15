@@ -4,6 +4,7 @@ import com.lukasbecker.iplan.*;
 
 import javax.persistence.*;
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,24 +13,25 @@ import java.util.List;
  */
 public class InscribeToCourse extends JFrame {
     private final EntityManagerFactory emf;
-    private final Student user;
     private List<Course> courses;
+    private final List<Course> studentCourses;
     private JPanel inscribePanel;
     private JComboBox<String> coursesComboBox;
     private JButton inscribeBtn;
+    private final Checker checker;
 
     /**
      * Constructor
      *
      * @param checker to check course date and time
      * @param emf     used for hibernate
-     * @param user    the current user
      */
-    public InscribeToCourse(Checker checker, EntityManagerFactory emf, User user) {
+    public InscribeToCourse(Checker checker, EntityManagerFactory emf) {
         this.emf = emf;
-        this.user = (Student) user;
+        this.checker = checker;
+        studentCourses = new ArrayList<>();
         getCourses();
-
+        getStudentCourses();
         add(inscribePanel);
 
         inscribeBtn.addActionListener(e -> inscribe());
@@ -39,6 +41,11 @@ public class InscribeToCourse extends JFrame {
      * adds the course to the students course list
      */
     private void inscribe() {
+        ERRORS err = checker.checkCourseTime();
+        if(err != ERRORS.OK){
+            JOptionPane.showMessageDialog(inscribePanel,"Overlapping Courses: "+err,
+                    "Overlapping course",JOptionPane.ERROR_MESSAGE);
+        }
        CourseUser courseUser =  new CourseUser(courses.get(coursesComboBox.getSelectedIndex()), User.getCurrentUser());
 
         EntityManager em = emf.createEntityManager();
@@ -66,5 +73,27 @@ public class InscribeToCourse extends JFrame {
         } finally {
             em.close();
         }
+    }
+    private void getStudentCourses() {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+
+        String query = "SELECT c FROM CourseUser c WHERE c.id IS NOT NULL";
+        TypedQuery<CourseUser> tq = em.createQuery(query, CourseUser.class);
+        et.begin();
+        try {
+            tq.getResultList().forEach(r->{
+                if(r.getUser().getUserName().equals(User.getCurrentUser().getUserName())){
+                    studentCourses.add(r.getCourse());
+                }
+            });
+            courses.forEach(c -> coursesComboBox.addItem(c.getCourseName()));
+        } catch (NoResultException nre) {
+            nre.printStackTrace();
+        } finally {
+            em.close();
+        }
+        studentCourses.forEach(checker::addCourse);
+
     }
 }

@@ -1,7 +1,6 @@
 package com.lukasbecker.UI;
 
 import com.lukasbecker.iplan.Checker;
-import com.lukasbecker.iplan.User;
 
 import javax.persistence.EntityManagerFactory;
 import javax.swing.*;
@@ -23,12 +22,11 @@ public class StudentActionSelector extends JFrame {
      *
      * @param checker used later..
      * @param emf     used for hibernate
-     * @param u       the current user
      */
-    public StudentActionSelector(Checker checker, EntityManagerFactory emf, User u) {
+    public StudentActionSelector(Checker checker, EntityManagerFactory emf) {
         add(studentSelectorFrame);
         inscribeToCourseBtn.addActionListener(e -> {
-            InscribeToCourse inscribeToCourse = new InscribeToCourse(checker, emf, u);
+            InscribeToCourse inscribeToCourse = new InscribeToCourse(checker, emf);
             inscribeToCourse.setVisible(true);
         });
 

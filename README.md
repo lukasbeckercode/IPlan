@@ -41,8 +41,6 @@ For said website, I finally decided on using ThymeLeaf with SpringBoot. It creat
 I might add some css for it later
 ___
 ## TODO
-  - check Checker class: Testcase Written!  
   - add timetable: Thymeleaf added, maybe css?  
-  - check what assistent entity is: my teacher entity
   - let users edit and remove things
   - more responsiveness: threads, message boxes 

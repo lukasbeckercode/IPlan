@@ -105,7 +105,7 @@ public class Intro extends JFrame {
                         teacherActionSelector.pack();
                         teacherActionSelector.setVisible(true);
                     } else if (studentRadioBtn.isSelected()) {
-                        StudentActionSelector studentActionSelector = new StudentActionSelector(checker, emf, u);
+                        StudentActionSelector studentActionSelector = new StudentActionSelector(checker, emf);
                         studentActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         studentActionSelector.pack();
                         studentActionSelector.setVisible(true);
