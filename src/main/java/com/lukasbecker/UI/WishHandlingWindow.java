@@ -40,15 +40,23 @@ public class WishHandlingWindow extends JFrame {
         wish.setStatus(status);
         em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
-        et.begin();
-        em.merge(wish);
-        et.commit();
+        try {
+
+            et.begin();
+            em.merge(wish);
+            et.commit();
+            JOptionPane.showMessageDialog(wishHandlingForm,"Status updated successfully!",
+                    "Success",JOptionPane.INFORMATION_MESSAGE);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(wishHandlingForm,"An Error occurred. Send help please...",
+                    e.getMessage(),JOptionPane.ERROR_MESSAGE);
+        }
     }
     private void getCourseWishes(){
 
          em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
-
+        wishesComboBox.removeAllItems();
         String query = "SELECT c FROM CourseWish c WHERE c.id IS NOT NULL";
         TypedQuery<CourseWish> tq = em.createQuery(query, CourseWish.class);
         et.begin();

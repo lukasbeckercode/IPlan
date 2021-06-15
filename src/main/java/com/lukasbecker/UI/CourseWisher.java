@@ -65,6 +65,7 @@ public class CourseWisher extends JFrame {
     List<Room> getRooms() {
         EntityManager EM = emf.createEntityManager();
         String query = "SELECT r FROM Room r WHERE r.id IS NOT NULL";
+        roomComboBox.removeAllItems();
         TypedQuery<Room> tq = EM.createQuery(query, Room.class);
         List<Room> rooms = null;
         try {

@@ -70,7 +70,7 @@ public class InscribeToCourse extends JFrame {
     private void getCourses() {
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
-
+        coursesComboBox.removeAllItems();
         String query = "SELECT c FROM Course c WHERE c.id IS NOT NULL";
         TypedQuery<Course> tq = em.createQuery(query, Course.class);
         et.begin();

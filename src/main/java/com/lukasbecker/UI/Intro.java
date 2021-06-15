@@ -93,7 +93,7 @@ public class Intro extends JFrame {
         List<User> users = getUsers();
         for (User u : users) {
             if (u.getUserName().equals(username)) {
-                noUserFound = false; 
+                noUserFound = false;
                 if (u.getPassword().equals(password)) {
                     User.setCurrentUser(u);
                     if (adminRadioBtn.isSelected()) {

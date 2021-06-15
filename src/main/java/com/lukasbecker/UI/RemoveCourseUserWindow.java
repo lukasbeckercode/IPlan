@@ -18,13 +18,15 @@ public class RemoveCourseUserWindow extends JFrame{
     public RemoveCourseUserWindow(EntityManagerFactory emf){
         add(removeWindowForm);
         this.emf = emf;
+        getCourses();
+        setText();
         removeButton.addActionListener(e->removeCourse());
     }
 
     private void getCourses(){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
-
+        courseComboBox.removeAllItems();
         String query = "SELECT c FROM CourseUser c WHERE c.id IS NOT NULL";
         TypedQuery<CourseUser> tq = em.createQuery(query, CourseUser.class);
         et.begin();

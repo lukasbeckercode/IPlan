@@ -30,6 +30,7 @@ public class RemoveCourseWindow extends JFrame {
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 
+        courseComboBox.removeAllItems();
         String query = "SELECT c FROM Course c WHERE c.id IS NOT NULL";
         TypedQuery<Course> tq = em.createQuery(query, Course.class);
         et.begin();
@@ -58,6 +59,8 @@ public class RemoveCourseWindow extends JFrame {
             Course course = em.find(Course.class,courses.get(courseComboBox.getSelectedIndex()).getCourseID()) ;
             em.remove(course);
             et.commit();
+            JOptionPane.showMessageDialog(removeCourseForm,"Course deleted successfully",
+                    "Success",JOptionPane.INFORMATION_MESSAGE);
         }catch (Exception e){
             JOptionPane.showMessageDialog(removeCourseForm,
                     "Error: Could not delete Course because there are still students inscribed to it!",

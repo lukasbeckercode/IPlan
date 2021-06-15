@@ -33,6 +33,8 @@ public class RemoveRoomWindow extends JFrame{
             Room room = em.find(Room.class, rooms.get(roomComboBox.getSelectedIndex()).getRoomNr()) ;
             em.remove(room);
             et.commit();
+            JOptionPane.showMessageDialog(removeRoomForm,"Room removed successfully!",
+                    "Success",JOptionPane.INFORMATION_MESSAGE);
         }catch (Exception e){
            int resp =  JOptionPane.showConfirmDialog(removeRoomForm,
                     "Error: Could not delete Room because there are still courses in it! Open 'Delete Course window?'",
@@ -60,6 +62,7 @@ public class RemoveRoomWindow extends JFrame{
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 
+        roomComboBox.removeAllItems();
         String query = "SELECT r FROM Room r WHERE r.id IS NOT NULL";
         TypedQuery<Room> tq = em.createQuery(query, Room.class);
         et.begin();
