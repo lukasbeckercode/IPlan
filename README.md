@@ -26,6 +26,5 @@ I might add some css for it later
   - check Checker class: Testcase Written!  
   - add timetable: Thymeleaf added, maybe css?  
   - check what assistent entity is: my teacher entity
-  - Implement accept or decline feature for CourseWishes
   - let users edit and remove things
   - more responsiveness: threads, message boxes 
