@@ -1,6 +1,6 @@
 # IPlan 
 
-####by Lukas Becker
+#### by Lukas Becker
 ___
 This Programm is, for the most part, a desktop app. A user can log in or register at the welcome screen. Depending on 
 the type of user, different options for what a user can do are shown. Admins can add courses and rooms to the System, 
