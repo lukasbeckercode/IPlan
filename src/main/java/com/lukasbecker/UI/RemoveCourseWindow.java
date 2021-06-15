@@ -1,12 +1,18 @@
 package com.lukasbecker.UI;
 
 import com.lukasbecker.iplan.Course;
-import com.lukasbecker.iplan.Room;
 
 import javax.persistence.*;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * RemoveCourseWindow <br />
+ * Dialoge window to remove a course
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 23:03
+ */
 
 public class RemoveCourseWindow extends JFrame {
     private JComboBox<String> courseComboBox;
@@ -16,6 +22,10 @@ public class RemoveCourseWindow extends JFrame {
     private final EntityManagerFactory emf;
     private List<Course> courses;
 
+    /**
+     * Constructor
+     * @param emf used for hibernate
+     */
     public RemoveCourseWindow(EntityManagerFactory emf){
         this.emf = emf;
         courses = new ArrayList<>();
@@ -26,6 +36,10 @@ public class RemoveCourseWindow extends JFrame {
         removeCourseButton.addActionListener(e->removeCourse());
 
     }
+
+    /**
+     * gets all existing courses
+     */
     private void getCourses(){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
@@ -44,6 +58,9 @@ public class RemoveCourseWindow extends JFrame {
         }
     }
 
+    /**
+     * dynamically change the textArea to show course details
+     */
     private void setText(){
         Course course = courses.get(courseComboBox.getSelectedIndex());
         String content = String.format("Course name: %s%nStart: %s%nEnd: %s%nTeacher: %s%nRoom NR: %s%n",
@@ -51,6 +68,10 @@ public class RemoveCourseWindow extends JFrame {
                 course.getRoom().getRoomName());
         textArea1.setText(content);
     }
+
+    /**
+     * try to remove the Course
+     */
     private void removeCourse(){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();

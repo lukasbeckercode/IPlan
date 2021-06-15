@@ -6,8 +6,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.swing.*;
 
 /**
+ * AdminActionSelector <br />
  * Lets an Admin choose what he wants to do
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 16:34
  */
+
 public class AdminActionSelector extends JFrame {
     private JPanel adminSelectorFrame;
     private JButton addRoomBtn;

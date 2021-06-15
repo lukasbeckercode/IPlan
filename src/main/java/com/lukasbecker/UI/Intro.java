@@ -7,8 +7,12 @@ import javax.swing.*;
 import java.util.List;
 
 /**
+ * Intro <br />
  * First Login Screen every user sees in startup of the app
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 22:52
  */
+
 public class Intro extends JFrame {
     private JPanel introFrame;
     private JRadioButton studentRadioBtn;
@@ -74,6 +78,11 @@ public class Intro extends JFrame {
     }
 
 
+    /**
+     * checks if a user exists or not
+     * @param userName the username to search for
+     * @return true if found, false if not
+     */
     public boolean userExists(String userName){
         for(User user:getUsers()){
             if(user.getUserName().equals(userName)){

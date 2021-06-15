@@ -8,8 +8,12 @@ import javax.persistence.EntityTransaction;
 import javax.swing.*;
 
 /**
+ * AddRoomWindow <br />
  * adds a room to the database
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 10:54
  */
+
 public class AddRoomWindow extends JFrame {
     private JPanel addRoomPanel;
     private JTextField roomNameTextBox;

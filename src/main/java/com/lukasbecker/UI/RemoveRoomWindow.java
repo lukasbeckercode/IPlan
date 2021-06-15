@@ -7,6 +7,13 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RemoveRoomWindow <br />
+ * Dialoge window to remove a room
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 23:03
+ */
+
 public class RemoveRoomWindow extends JFrame{
     private JComboBox<String> roomComboBox;
     private JButton removeRoomButton;
@@ -15,6 +22,10 @@ public class RemoveRoomWindow extends JFrame{
     private final EntityManagerFactory emf;
     private List<Room> rooms;
 
+    /**
+     * Constructor
+     * @param emf used for hibernate
+     */
     public RemoveRoomWindow(EntityManagerFactory emf){
         this.emf = emf ;
         rooms = new ArrayList<>() ;
@@ -25,6 +36,10 @@ public class RemoveRoomWindow extends JFrame{
         removeRoomButton.addActionListener(e->removeRoom());
 
     }
+
+    /**
+     * try to remove a room
+     */
     private void removeRoom(){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
@@ -50,6 +65,10 @@ public class RemoveRoomWindow extends JFrame{
         setText();
 
     }
+
+    /**
+     * dynamically change the textArea to show details of selected room
+     */
     private void setText(){
         Room room = rooms.get(roomComboBox.getSelectedIndex());
         String content = String.format("Room name: %s%nRoom number: %d",
@@ -57,7 +76,9 @@ public class RemoveRoomWindow extends JFrame{
         textArea1.setText(content);
     }
 
-
+    /**
+     * get all existing rooms
+     */
     private void getRooms(){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();

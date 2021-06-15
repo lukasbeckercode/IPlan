@@ -10,8 +10,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
+ * AddCourseWindow <br />
  * Window to add a course
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 14:57
  */
+
 public class AddCourseWindow extends JFrame {
     private JComboBox<String> roomComboBox;
     private JComboBox<String> teacherComboBox;
@@ -159,6 +163,10 @@ public class AddCourseWindow extends JFrame {
             }
         }
     }
+
+    /**
+     * gets courses from db
+     */
     public void getExistingCourses(){
         checker.clearList();
         EntityManager em = emf.createEntityManager();

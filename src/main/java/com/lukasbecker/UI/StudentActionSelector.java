@@ -10,8 +10,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
+ * StudentActionSelector <br />
  * lets a Student decide what to do
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 22:46
  */
+
 public class StudentActionSelector extends JFrame {
     private JPanel studentSelectorFrame;
     private JButton inscribeToCourseBtn;

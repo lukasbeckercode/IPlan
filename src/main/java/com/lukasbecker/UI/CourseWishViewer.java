@@ -5,6 +5,14 @@ import com.lukasbecker.iplan.CourseWish;
 import javax.swing.*;
 import java.util.List;
 
+
+/**
+ * CourseWishViewer <br />
+ * shows the assistent the status of his course wishes
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 13:36
+ */
+
 public class CourseWishViewer extends JFrame {
     private JTextArea textArea1;
     private JPanel wishViewerFrame;

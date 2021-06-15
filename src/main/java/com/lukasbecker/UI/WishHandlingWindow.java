@@ -8,6 +8,14 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * WishHandlingWindow <br />
+ * Lets an admin accept or decline a course wish
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 23:03
+ */
+
 public class WishHandlingWindow extends JFrame {
     private JComboBox<String> wishesComboBox;
     private JButton acceptBtn;
@@ -18,6 +26,10 @@ public class WishHandlingWindow extends JFrame {
     private EntityManager em;
     private final List<CourseWish> courseWishes ;
 
+    /**
+     * Constructor
+     * @param emf used for hibernate
+     */
     public WishHandlingWindow(EntityManagerFactory emf){
         this.emf = emf;
         courseWishes = new ArrayList<>();
@@ -30,12 +42,22 @@ public class WishHandlingWindow extends JFrame {
 
     }
 
+    /**
+     * dynamcally shows the details of a course wish
+     * @param wish the wish to show the details of
+     */
     private void updateTextBox(CourseWish wish){
         String content = String.format("Title: %s%nStart: %s%nEnd: %s%nRoom: %s%nTeacher: %s%n",
                 wish.getName(),wish.getStartDate(),wish.getEndDate(),wish.getRoom().getRoomName(),
                 wish.getTeacher().getUserName());
         textArea1.setText(content);
     }
+
+    /**
+     * sets the status of a wish
+     * @param wish the wish to get its status set
+     * @param status the status to be set
+     */
     private void setCourseStatus(CourseWish wish,WISH_STATUS status){
         wish.setStatus(status);
         em = emf.createEntityManager();
@@ -52,6 +74,10 @@ public class WishHandlingWindow extends JFrame {
                     e.getMessage(),JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * gets all the existing wishes
+     */
     private void getCourseWishes(){
 
          em = emf.createEntityManager();

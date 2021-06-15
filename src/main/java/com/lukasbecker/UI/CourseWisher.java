@@ -8,6 +8,13 @@ import javax.swing.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * CourseWisher <br />
+ * sends a course wish to the admin
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 22:57
+ */
+
 public class CourseWisher extends JFrame {
     private JTextField nameTextBox;
     private JComboBox<String> roomComboBox;

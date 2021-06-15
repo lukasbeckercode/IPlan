@@ -8,9 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * InscribeToCourse <br />
  * Lets a Student inscribe to a course
- * TODO: Check for overlapping courses!
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 22:57
  */
+
 public class InscribeToCourse extends JFrame {
     private final EntityManagerFactory emf;
     private List<Course> courses;
@@ -83,6 +86,10 @@ public class InscribeToCourse extends JFrame {
             em.close();
         }
     }
+
+    /**
+     * gets the courses the student is inscribed to
+     */
     private void getStudentCourses() {
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();

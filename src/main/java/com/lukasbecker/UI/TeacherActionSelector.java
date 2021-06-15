@@ -11,6 +11,13 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+/**
+ * TeacherActionSelector <br />
+ * lets a teacher choose what to do next
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 13:36
+ */
+
 public class TeacherActionSelector extends JFrame {
     private JPanel teacherSelectorFrame;
     private JButton wishForCourseDateButton;
@@ -19,6 +26,10 @@ public class TeacherActionSelector extends JFrame {
 
     private List<CourseWish> courseWishes ;
 
+    /**
+     * Constructor
+     * @param emf used for hibernate
+     */
     public TeacherActionSelector(EntityManagerFactory emf) {
         add(teacherSelectorFrame);
         this.emf = emf;
@@ -39,6 +50,9 @@ public class TeacherActionSelector extends JFrame {
         });
     }
 
+    /**
+     * checks if any wishes have been declined
+     */
     private void checkWishStatus(){
         getCourseWishes();
         courseWishes.forEach(cw->{
@@ -55,6 +69,9 @@ public class TeacherActionSelector extends JFrame {
         });
     }
 
+    /**
+     * gets all existing course wishes and adds the right ones to a list
+     */
     private void getCourseWishes(){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
