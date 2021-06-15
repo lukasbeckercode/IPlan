@@ -12,9 +12,9 @@
         <class>com.lukasbecker.iplan.Admin</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.64.2/iplan"/>
-            <property name="javax.persistence.jdbc.user" value="testuser"/>
-            <property name="javax.persistence.jdbc.password" value="testpw"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/iplan"/>
+            <property name="javax.persistence.jdbc.user" value="Prog2"/>
+            <property name="javax.persistence.jdbc.password" value="Prog2"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
