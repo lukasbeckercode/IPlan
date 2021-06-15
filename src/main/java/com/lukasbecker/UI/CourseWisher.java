@@ -60,9 +60,7 @@ public class CourseWisher extends JFrame {
             EM.close();
         }
         if (rooms != null) {
-            rooms.forEach(r -> {
-                roomComboBox.addItem(r.getRoomName());
-            });
+            rooms.forEach(r -> roomComboBox.addItem(r.getRoomName()));
         }
         return rooms;
     }

@@ -8,10 +8,19 @@ import java.io.Serializable;
  */
 @Entity
 public class Admin extends User implements Serializable {
+
+    /**
+     * Constructor
+     * @param userName chosen username
+     * @param password chosen password
+     */
     public Admin(String userName, String password) {
         super(userName, password);
     }
 
+    /**
+     * default Constructor
+     */
     public Admin() {
 
     }

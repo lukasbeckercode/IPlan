@@ -69,6 +69,9 @@ public class Course implements Serializable {
         }
     }
 
+    /**
+     * default constructor
+     */
     public Course() {
 
     }
@@ -92,27 +95,53 @@ public class Course implements Serializable {
         return ERRORS.OK;
     }
 
+    /**
+     * room getter
+     * @return the room a course is in
+     */
     @ManyToOne
     public Room getRoom() {
         return room;
     }
+
+    /**
+     * room setter
+     * @param room the room a course is in
+     */
     public void setRoom(Room room) {
         this.room = room;
     }
+
+    /**
+     * startDateTime Getter
+     * @return the date and time of the course start
+     */
     @Column
     public LocalDateTime getStartDate() {
         return startDate;
     }
+
+    /**
+     * Setter for start date and Time
+     * @param startDate the preferred start date and time
+     */
     public void setStartDate(LocalDateTime startDate){
         this.startDate = startDate;
     }
 
-
+    /**
+     * end date and time getter
+     * @return the end date and time of a course
+     */
     @Column
     public LocalDateTime getEndDate() {
         return endDate;
     }
 
+    /**
+     * end date and time setter
+     * @param endDate the preferred and date and time of a course
+     */
     public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }

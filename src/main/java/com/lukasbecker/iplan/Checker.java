@@ -100,9 +100,7 @@ public class Checker {
         return ERRORS.OK;
     }
 
-    public void removeCourse(int id){
-        courseList.remove(id);
-    }
+
 
 
 }

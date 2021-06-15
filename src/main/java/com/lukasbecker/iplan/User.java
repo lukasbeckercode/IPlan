@@ -24,32 +24,60 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    /**
+     * default constructor
+     */
     public User() {
 
     }
 
+    /**
+     * getter for username
+     * @return username
+     */
     @Id
     @Column
     public String getUserName(){
         return userName;
     }
+
+    /**
+     * setter for username
+     * @param userName the preferred username
+     */
     public void setUserName(String userName){
         this.userName = userName;
     }
 
+    /**
+     * getter for password
+     * @return the password of a user
+     */
     @Column
     public String getPassword() {
         return password;
     }
 
+    /**
+     * setter for password
+     * @param password the password to be set
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * getter for the user that is currently logged in
+     * @return the currently logged in user
+     */
     public static User getCurrentUser() {
         return currentUser;
     }
 
+    /**
+     * Setter for the currently logged in user
+     * @param currentUser the currently logged in user
+     */
     public static void setCurrentUser(User currentUser) {
         User.currentUser = currentUser;
     }
