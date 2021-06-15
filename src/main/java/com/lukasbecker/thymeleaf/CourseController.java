@@ -1,6 +1,5 @@
 package com.lukasbecker.thymeleaf;
 
-import com.lukasbecker.iplan.Course;
 import com.lukasbecker.iplan.CourseUser;
 import com.lukasbecker.iplan.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +10,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
+
 @Controller
 public class CourseController {
 
     @Autowired
     private CoursesRepo coursesRepo;
 
+    /**
+     * maps the data stored in CourseUser to a html page
+     * @param model required param
+     */
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     public String getEmployeeList(Model model) {
 

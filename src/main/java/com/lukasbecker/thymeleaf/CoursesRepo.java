@@ -11,7 +11,11 @@ import java.util.List;
 public class CoursesRepo {
 EntityManagerFactory emf = Persistence.createEntityManagerFactory("IPlan");
 
-
+    /**
+     * reads the data from the database and then adds the right courses to a list
+     * @param user the logged in user, for personalized timetable
+     * @return a list of courses to be displayed in the timetable
+     */
     protected List<CourseUser> getCourses(User user) {
 
         List<CourseUser> courses = new ArrayList<>();
@@ -36,7 +40,6 @@ EntityManagerFactory emf = Persistence.createEntityManagerFactory("IPlan");
                 }
 
             }
-            //courses = tq.getResultList();
         } catch (NoResultException nre) {
             nre.printStackTrace();
         } finally {

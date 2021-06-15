@@ -1,7 +1,6 @@
 import com.lukasbecker.UI.Intro;
 import com.lukasbecker.iplan.*;
 import com.lukasbecker.thymeleaf.app;
-import org.springframework.boot.SpringApplication;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -20,7 +19,7 @@ public class Application {
 
         ui.start();
 
-        Thread thymeleaf = new Thread(()-> SpringApplication.run(app.class,args));
+        Thread thymeleaf = new Thread(()-> app.run(args));
         thymeleaf.start();
        // EMF.close();
     }
