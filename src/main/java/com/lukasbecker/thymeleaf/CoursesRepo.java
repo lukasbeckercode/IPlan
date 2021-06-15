@@ -7,6 +7,13 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * CoursesRepo <br />
+ * adds the corresponding courses to a list for mapping
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 22:19
+ */
+
 @Repository
 public class CoursesRepo {
 EntityManagerFactory emf = Persistence.createEntityManagerFactory("IPlan");

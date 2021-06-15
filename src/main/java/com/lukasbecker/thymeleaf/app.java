@@ -3,6 +3,12 @@ package com.lukasbecker.thymeleaf;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * app <br />
+ * runs the thymeleaf server
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 11:02
+ */
 @SpringBootApplication
 public class app {
 

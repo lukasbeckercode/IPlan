@@ -11,6 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 
+/**
+ * CourseController <br />
+ * maps the CoursesRepo to html
+ * @see CoursesRepo
+ * @author Lukas Becker
+ * Last Change: 15/06/2021, 11:02
+ */
+
 @Controller
 public class CourseController {
 
