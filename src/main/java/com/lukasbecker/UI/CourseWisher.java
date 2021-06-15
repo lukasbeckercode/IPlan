@@ -18,6 +18,8 @@ public class CourseWisher extends JFrame {
     private JPanel courseWishFrame;
     private DateTimePicker endTimePicker;
     private DateTimePicker startTimePicker;
+
+    List<Room> rooms;
     EntityManagerFactory emf;
 
     /**
@@ -27,6 +29,7 @@ public class CourseWisher extends JFrame {
     public CourseWisher(EntityManagerFactory emf){
         this.emf = emf;
         add(courseWishFrame);
+        rooms = getRooms(); 
         sendWishButton.addActionListener(e->sendCourseWish());
     }
 
@@ -37,7 +40,6 @@ public class CourseWisher extends JFrame {
         String name = nameTextBox.getText();
         LocalDateTime startTime = startTimePicker.getDateTimePermissive();
         LocalDateTime endTime = endTimePicker.getDateTimePermissive();
-        List<Room> rooms = getRooms();
         Room room = rooms.get(roomComboBox.getSelectedIndex());
 
         CourseWish cw = new CourseWish(name,startTime,endTime,room,(Teacher) User.getCurrentUser());

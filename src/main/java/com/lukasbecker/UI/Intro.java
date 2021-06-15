@@ -100,7 +100,7 @@ public class Intro extends JFrame {
                         adminActionSelector.pack();
                         adminActionSelector.setVisible(true);
                     } else if (teacherRadioBtn.isSelected()) {
-                        TeacherActionSelector teacherActionSelector = new TeacherActionSelector(u);
+                        TeacherActionSelector teacherActionSelector = new TeacherActionSelector(emf);
                         teacherActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         teacherActionSelector.pack();
                         teacherActionSelector.setVisible(true);
