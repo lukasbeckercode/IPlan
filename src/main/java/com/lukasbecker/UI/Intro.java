@@ -96,19 +96,19 @@ public class Intro extends JFrame {
                     User.setCurrentUser(u);
                     if (adminRadioBtn.isSelected()) {
                         AdminActionSelector adminActionSelector = new AdminActionSelector(checker, emf);
-                        adminActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         adminActionSelector.pack();
                         adminActionSelector.setVisible(true);
+                        this.setVisible(false);
                     } else if (teacherRadioBtn.isSelected()) {
                         TeacherActionSelector teacherActionSelector = new TeacherActionSelector(emf);
-                        teacherActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         teacherActionSelector.pack();
                         teacherActionSelector.setVisible(true);
+                        this.setVisible(false);
                     } else if (studentRadioBtn.isSelected()) {
                         StudentActionSelector studentActionSelector = new StudentActionSelector(checker, emf);
-                        studentActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         studentActionSelector.pack();
                         studentActionSelector.setVisible(true);
+                        this.setVisible(false);
                     } else {
                         JOptionPane.showMessageDialog(introFrame, "Error: No function(e.g. Student) selected",
                                 "Error", JOptionPane.ERROR_MESSAGE);

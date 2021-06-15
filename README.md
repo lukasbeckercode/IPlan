@@ -42,5 +42,4 @@ I might add some css for it later
 ___
 ## TODO
   - add timetable: Thymeleaf added, maybe css?  
-  - let users edit and remove things
   - more responsiveness: threads, message boxes 

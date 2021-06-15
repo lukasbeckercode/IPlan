@@ -45,6 +45,8 @@ EntityManagerFactory emf = Persistence.createEntityManagerFactory("IPlan");
         } finally {
             em.close();
         }
+        CourseUserTimeComparator cutc = new CourseUserTimeComparator();
+        courses.sort(cutc);
         return courses ;
     }
 }
