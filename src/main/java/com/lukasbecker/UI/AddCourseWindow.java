@@ -1,11 +1,13 @@
 package com.lukasbecker.UI;
 
+import com.github.lgooddatepicker.components.DateTimePicker;
 import com.lukasbecker.iplan.*;
 
 import javax.persistence.*;
 import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class AddCourseWindow extends JFrame {
     private JPanel mainPanel;
     private JTextField titleTextBox;
     private JTextField idTextBox;
+    private DateTimePicker startTimePicker;
+    private DateTimePicker endTimePicker;
     private final Checker checker;
     private final EntityManagerFactory emf;
     private List<Room> roomList;
@@ -45,7 +49,10 @@ public class AddCourseWindow extends JFrame {
         add(mainPanel);
         roomList = getRooms();
         teacherList = getTeachers();
+
+
         addCourseBtn.addActionListener(e -> {
+
             try {
                 addCourse();
             } catch (ParseException parseException) {
@@ -109,8 +116,10 @@ public class AddCourseWindow extends JFrame {
      */
     void addCourse() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy, HH:mm");
-        Date startDate = sdf.parse(startDateTextBox.getText());
-        Date endDate = sdf.parse(endDateTextBox.getText());
+
+        LocalDateTime startDate = startTimePicker.getDateTimePermissive();
+
+        LocalDateTime endDate = endTimePicker.getDateTimePermissive();
         String title = titleTextBox.getText();
         int id = 0;
 

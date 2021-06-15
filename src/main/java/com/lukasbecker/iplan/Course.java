@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  */
 @Entity
 public class Course implements Serializable {
-    private Date startDate, endDate;
+    private LocalDateTime startDate, endDate;
 
 
 
@@ -28,7 +29,7 @@ public class Course implements Serializable {
      * @param endDate end date of course
      * @param courseName title of course
      */
-    public Course(Date startDate, Date endDate, String courseName) {
+    public Course(LocalDateTime startDate, LocalDateTime endDate, String courseName) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.courseName = courseName;
@@ -51,7 +52,7 @@ public class Course implements Serializable {
      * @param teacher teacher teaching a course
      * @param room room in which the course takes place
      */
-    public Course(Date startDate, Date endDate, String courseName,Teacher teacher,Room room) {
+    public Course(LocalDateTime startDate, LocalDateTime endDate, String courseName, Teacher teacher, Room room) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.courseName = courseName;
@@ -80,8 +81,8 @@ public class Course implements Serializable {
      */
     public ERRORS checkTime() throws ParseException {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-        Date startTime = timeFormat.parse(timeFormat.format(startDate));
-        Date endTime = timeFormat.parse(timeFormat.format(endDate));
+        Date startTime = timeFormat.parse(startDate.toString().substring(startDate.toString().indexOf("T")+1));
+        Date endTime = timeFormat.parse(endDate.toString().substring(endDate.toString().indexOf("T")+1));
         if(startTime.before(timeFormat.parse("08:00"))){
             return ERRORS.EARLY;
         }else if(endTime.after(timeFormat.parse("23:00"))){
@@ -99,20 +100,20 @@ public class Course implements Serializable {
         this.room = room;
     }
     @Column
-    public Date getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
-    public void setStartDate(Date startDate){
+    public void setStartDate(LocalDateTime startDate){
         this.startDate = startDate;
     }
 
 
     @Column
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 

@@ -2,7 +2,7 @@ package com.lukasbecker.iplan;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * CourseWish is a wish from a teacher when and where to hold which course
@@ -11,10 +11,18 @@ import java.util.Date;
 @Entity
 public class CourseWish implements Serializable {
     private String name;
-    private Date startDate, endDate;
+    private LocalDateTime startDate, endDate;
     private Room room;
     private Teacher teacher;
     private int id;
+
+    public CourseWish(String name, LocalDateTime startDate, LocalDateTime endDate, Room room, Teacher teacher) {
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.room = room;
+        this.teacher = teacher;
+    }
 
     public CourseWish() {
     }
@@ -38,20 +46,20 @@ public class CourseWish implements Serializable {
     }
 
     @Column
-    public Date getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
     @Column
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
