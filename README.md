@@ -13,6 +13,7 @@ Date | Description|
 08.06.|Added Swing UI|
 11.06.|Added Database Connection and more GUI|
 14.06|Added a TimeTable in thymeleaf, fixed Course inscribing issue|
+15.06|replaced textBoxes with dateTimePickers, implemented course wisher feature|
 
 ## Design Decisions
 
@@ -22,8 +23,9 @@ The basic UI is made as a Desktop app using Swing, I am planning to make the act
 For said website, I finally decided on using ThymeLeaf with SpringBoot. It creates a simple table. 
 I might add some css for it later
 ## TODO
-- check Checker class: Testcase Written!  
-- add timetable: Thymeleaf added, maybe css?  
-- check what assistent entity is
-- course wisher isn`t implemented yet
-- more responsiveness: threads, message boxes 
+  - check Checker class: Testcase Written!  
+  - add timetable: Thymeleaf added, maybe css?  
+  - check what assistent entity is: my teacher entity
+  - Implement accept or decline feature for CourseWishes
+  - let users edit and remove things
+  - more responsiveness: threads, message boxes 

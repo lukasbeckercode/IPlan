@@ -29,7 +29,7 @@ public class CourseWisher extends JFrame {
     public CourseWisher(EntityManagerFactory emf){
         this.emf = emf;
         add(courseWishFrame);
-        rooms = getRooms(); 
+        rooms = getRooms();
         sendWishButton.addActionListener(e->sendCourseWish());
     }
 

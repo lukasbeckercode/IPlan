@@ -5,10 +5,13 @@ import com.lukasbecker.iplan.User;
 
 import javax.persistence.EntityManagerFactory;
 import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * lets a Student decide what to do
- * TODO: show timetable
  */
 public class StudentActionSelector extends JFrame {
     private JPanel studentSelectorFrame;
@@ -27,6 +30,15 @@ public class StudentActionSelector extends JFrame {
         inscribeToCourseBtn.addActionListener(e -> {
             InscribeToCourse inscribeToCourse = new InscribeToCourse(checker, emf, u);
             inscribeToCourse.setVisible(true);
+        });
+
+        showTimeTableBtn.addActionListener(e->{
+            Desktop browser = Desktop.getDesktop();
+            try {
+                browser.browse(new URI("http://localhost:8080"));
+            } catch (IOException | URISyntaxException ioException) {
+                ioException.printStackTrace();
+            }
         });
     }
 }
