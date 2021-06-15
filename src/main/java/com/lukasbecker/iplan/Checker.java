@@ -1,16 +1,11 @@
 package com.lukasbecker.iplan;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class Checker {
+public class Checker  {
     List<Course> courseList = new ArrayList<>();
-    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-    Date endTime = null;
-    Date startTime = null;
+    private final TimeComparator TimeComparator = new TimeComparator();
 
     /**
      * adds a course to the List
@@ -19,6 +14,7 @@ public class Checker {
      */
     public void addCourse(Course course) {
         courseList.add(course);
+        courseList.sort(TimeComparator);
     }
 
     /**
@@ -36,7 +32,7 @@ public class Checker {
 
             boolean check = courseList.get(i).getStartDate().isBefore(courseList.get(i - 1).getEndDate());
 
-            if (check && courseList.get(i - 1).getRoom() == courseList.get(i).getRoom()) {
+            if (check && courseList.get(i - 1).getRoom().getRoomNr() == courseList.get(i).getRoom().getRoomNr()) {
                 return ERRORS.OVERLAPPING_ROOM;
             }
         }
@@ -57,7 +53,7 @@ public class Checker {
 
         for (int i = 1; i < courseList.size(); i++) {
             check1 = courseList.get(i).getStartDate().isBefore(courseList.get(i - 1).getEndDate());
-            if (check1 && courseList.get(i - 1).getTeacher().equals(courseList.get(i).getTeacher())) {
+            if (check1 && courseList.get(i - 1).getTeacher().getUserName().equals(courseList.get(i).getTeacher().getUserName())) {
                 return ERRORS.OVERLAPPING_TEACHER;
             }
         }
@@ -88,5 +84,8 @@ public class Checker {
         return ERRORS.OK;
     }
 
+    public void clearList(){
+        courseList.clear();
+    }
 
 }

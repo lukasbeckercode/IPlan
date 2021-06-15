@@ -109,7 +109,7 @@ public class AddCourseWindow extends JFrame {
      * @throws ParseException in theory, this would be thrown if the stored date doesn't match the expected format
      */
     void addCourse() throws ParseException {
-
+        getExistingCourses();
         LocalDateTime startDate = startTimePicker.getDateTimePermissive();
 
         LocalDateTime endDate = endTimePicker.getDateTimePermissive();
@@ -121,7 +121,8 @@ public class AddCourseWindow extends JFrame {
         } catch (NumberFormatException nfe) {
             nfe.printStackTrace();
         }
-        Course course = new Course(startDate, endDate, title);
+        Course course = new Course(startDate, endDate, title,teacherList.get(teacherComboBox.getSelectedIndex()),
+                roomList.get(roomComboBox.getSelectedIndex()));
         checker.addCourse(course);
         ERRORS errorRoom = checker.checkRoom();
         ERRORS errorTeacher = checker.checkTeacher();
@@ -157,5 +158,21 @@ public class AddCourseWindow extends JFrame {
                 EM.close();
             }
         }
+    }
+    public void getExistingCourses(){
+        checker.clearList();
+        EntityManager em = emf.createEntityManager();
+        String query = "SELECT c FROM Course c WHERE c.id IS NOT NULL";
+        TypedQuery<Course> tq = em.createQuery(query, Course.class);
+        List<Course> courses;
+        try {
+            courses = tq.getResultList();
+            courses.forEach(checker::addCourse);
+        } catch (NoResultException nre) {
+            nre.printStackTrace();
+        } finally {
+            em.close();
+        }
+
     }
 }
