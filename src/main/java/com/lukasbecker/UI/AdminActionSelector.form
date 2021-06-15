@@ -24,12 +24,12 @@
           <text value="Add a course"/>
         </properties>
       </component>
-      <component id="2532b" class="javax.swing.JButton" binding="button3" default-binding="true">
+      <component id="2532b" class="javax.swing.JButton" binding="viewCourseWishesBtn">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <text value="View Course Wishes"/>
         </properties>
       </component>
       <component id="393ac" class="javax.swing.JLabel">

@@ -6,17 +6,13 @@ import com.lukasbecker.iplan.*;
 import javax.persistence.*;
 import javax.swing.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Window to add a course
  */
 public class AddCourseWindow extends JFrame {
-    private JTextField startDateTextBox;
-    private JTextField endDateTextBox;
     private JComboBox<String> roomComboBox;
     private JComboBox<String> teacherComboBox;
     private JButton addCourseBtn;
@@ -79,9 +75,7 @@ public class AddCourseWindow extends JFrame {
             EM.close();
         }
         if (rooms != null) {
-            rooms.forEach(r -> {
-                roomComboBox.addItem(r.getRoomName());
-            });
+            rooms.forEach(r -> roomComboBox.addItem(r.getRoomName()));
         }
         return rooms;
     }
@@ -115,7 +109,6 @@ public class AddCourseWindow extends JFrame {
      * @throws ParseException in theory, this would be thrown if the stored date doesn't match the expected format
      */
     void addCourse() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy, HH:mm");
 
         LocalDateTime startDate = startTimePicker.getDateTimePermissive();
 

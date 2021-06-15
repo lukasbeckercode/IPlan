@@ -33,7 +33,7 @@ public class AddRoomWindow extends JFrame {
      */
     private void addRoom() {
         String name = roomNameTextBox.getText();
-        int nr = 0;
+        int nr;
         try {
             nr = Integer.parseInt(roomNumberTextBox.getText());
         } catch (NumberFormatException nfe) {
@@ -43,8 +43,7 @@ public class AddRoomWindow extends JFrame {
             return;
         }
         EntityManager em = emf.createEntityManager();
-        EntityTransaction et = null;
-        et = em.getTransaction();
+        EntityTransaction et=em.getTransaction();
         et.begin();
         Room r = new Room(nr, name);
         em.persist(r);

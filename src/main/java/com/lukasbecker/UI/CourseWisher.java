@@ -20,13 +20,19 @@ public class CourseWisher extends JFrame {
     private DateTimePicker startTimePicker;
     EntityManagerFactory emf;
 
+    /**
+     * Constructor
+     * @param emf used for hibernate
+     */
     public CourseWisher(EntityManagerFactory emf){
         this.emf = emf;
         add(courseWishFrame);
         sendWishButton.addActionListener(e->sendCourseWish());
     }
 
-
+    /**
+     * sends a course wish to the database for an admin to check
+     */
     private void sendCourseWish(){
         String name = nameTextBox.getText();
         LocalDateTime startTime = startTimePicker.getDateTimePermissive();
@@ -42,6 +48,7 @@ public class CourseWisher extends JFrame {
         em.persist(cw);
         et.commit();
     }
+
     /**
      * updates which rooms exist in the database
      *

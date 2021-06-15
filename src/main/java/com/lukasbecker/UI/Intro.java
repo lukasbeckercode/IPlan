@@ -54,7 +54,7 @@ public class Intro extends JFrame {
      * adds a user to the database
      */
     private void addUser() {
-        User u = null;
+        User u;
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
         if (adminRadioBtn.isSelected()) {
@@ -95,7 +95,7 @@ public class Intro extends JFrame {
                 if (u.getPassword().equals(password)) {
                     User.setCurrentUser(u);
                     if (adminRadioBtn.isSelected()) {
-                        AdminActionSelector adminActionSelector = new AdminActionSelector(checker, emf, u);
+                        AdminActionSelector adminActionSelector = new AdminActionSelector(checker, emf);
                         adminActionSelector.setDefaultCloseOperation(EXIT_ON_CLOSE);
                         adminActionSelector.pack();
                         adminActionSelector.setVisible(true);

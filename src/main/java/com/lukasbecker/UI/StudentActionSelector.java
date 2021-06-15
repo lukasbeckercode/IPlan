@@ -8,6 +8,7 @@ import javax.swing.*;
 
 /**
  * lets a Student decide what to do
+ * TODO: show timetable
  */
 public class StudentActionSelector extends JFrame {
     private JPanel studentSelectorFrame;

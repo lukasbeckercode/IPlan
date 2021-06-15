@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Lets a Student inscribe to a course
+ * TODO: Check for overlapping courses!
  */
 public class InscribeToCourse extends JFrame {
     private final EntityManagerFactory emf;
@@ -36,11 +37,9 @@ public class InscribeToCourse extends JFrame {
 
     /**
      * adds the course to the students course list
-     * TODO: fix me!
      */
     private void inscribe() {
        CourseUser courseUser =  new CourseUser(courses.get(coursesComboBox.getSelectedIndex()), User.getCurrentUser());
-       // user.addCourse(courses.get(coursesComboBox.getSelectedIndex()));
 
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();

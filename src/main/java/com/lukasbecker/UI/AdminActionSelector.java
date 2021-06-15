@@ -1,7 +1,6 @@
 package com.lukasbecker.UI;
 
 import com.lukasbecker.iplan.Checker;
-import com.lukasbecker.iplan.User;
 
 import javax.persistence.EntityManagerFactory;
 import javax.swing.*;
@@ -13,16 +12,15 @@ public class AdminActionSelector extends JFrame {
     private JPanel adminSelectorFrame;
     private JButton addRoomBtn;
     private JButton addACourseButton;
-    private JButton button3;
+    private JButton viewCourseWishesBtn;
 
     /**
      * Constructor
      *
      * @param checker used to check courses,dates, teachers and rooms
      * @param emf     used for hibernate
-     * @param u       the current user
      */
-    public AdminActionSelector(Checker checker, EntityManagerFactory emf, User u) {
+    public AdminActionSelector(Checker checker, EntityManagerFactory emf) {
         add(adminSelectorFrame);
         addRoomBtn.addActionListener(e -> {
             AddRoomWindow addRoomWindow = new AddRoomWindow(emf);
