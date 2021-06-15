@@ -14,6 +14,7 @@ public class CourseWish implements Serializable {
     private LocalDateTime startDate, endDate;
     private Room room;
     private Teacher teacher;
+    private WISH_STATUS status;
     private int id;
 
     /**
@@ -23,19 +24,29 @@ public class CourseWish implements Serializable {
      * @param endDate preferred end date
      * @param room preferred room
      * @param teacher teacher to tech this course
+     * @param status tells the teacher what the status of the wish is
      */
-    public CourseWish(String name, LocalDateTime startDate, LocalDateTime endDate, Room room, Teacher teacher) {
+    public CourseWish(String name, LocalDateTime startDate, LocalDateTime endDate, Room room, Teacher teacher,WISH_STATUS status) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.room = room;
         this.teacher = teacher;
+        this.status = status;
     }
 
     /**
      * default constructor
      */
     public CourseWish() {
+    }
+
+    public WISH_STATUS getStatus() {
+        return status;
+    }
+
+    public void setStatus(WISH_STATUS status) {
+        this.status = status;
     }
 
     /**

@@ -1,10 +1,7 @@
 package com.lukasbecker.UI;
 
 import com.github.lgooddatepicker.components.DateTimePicker;
-import com.lukasbecker.iplan.CourseWish;
-import com.lukasbecker.iplan.Room;
-import com.lukasbecker.iplan.Teacher;
-import com.lukasbecker.iplan.User;
+import com.lukasbecker.iplan.*;
 
 import javax.persistence.*;
 import javax.swing.*;
@@ -42,7 +39,7 @@ public class CourseWisher extends JFrame {
         LocalDateTime endTime = endTimePicker.getDateTimePermissive();
         Room room = rooms.get(roomComboBox.getSelectedIndex());
 
-        CourseWish cw = new CourseWish(name,startTime,endTime,room,(Teacher) User.getCurrentUser());
+        CourseWish cw = new CourseWish(name,startTime,endTime,room,(Teacher) User.getCurrentUser(), WISH_STATUS.PENDING);
 
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();

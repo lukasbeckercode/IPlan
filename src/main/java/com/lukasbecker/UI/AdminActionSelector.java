@@ -33,5 +33,11 @@ public class AdminActionSelector extends JFrame {
             addCourseWindow.pack();
             addCourseWindow.setVisible(true);
         });
+
+        viewCourseWishesBtn.addActionListener(e->{
+            WishHandlingWindow whw = new WishHandlingWindow(emf);
+            whw.pack();
+            whw.setVisible(true);
+        });
     }
 }
